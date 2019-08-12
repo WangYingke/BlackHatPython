@@ -1,16 +1,18 @@
 import socket
 
-target_host = "www.google.com"
+target_host = "172.20.10.3"
 target_port = 80
 
-#CREAT A SOCKET OBJECT 
+#CREATE A SOCKET OBJECT 
 client = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
 #CONNECT THE CLIENT AND THE HOST 
 client.connect((target_host,target_port))
 
 #SEND SOME DATA 
-client.send("GET / HTTP/1.1\r\nHost: google.com\r\n\r\n")
+#message = "GET / HTTP/1.1\r\n Host: cn.bing.com\r\n\r\n"
+message = "ABCDEF"
+client.send(message.encode())
 
 #RECEIVE SOME DATA 
 response = client.recv(4096)
